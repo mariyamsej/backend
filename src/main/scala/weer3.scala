@@ -161,4 +161,23 @@ object week3 extends App{
     }
     ans
   }
+
+  def positive(z: Int, customfunction: CustomFunction): List[List[Int]] = {
+    var ans: List[List[Int]] = List[List[Int]]()
+
+    for (x <- 1 to 1000; y <- 1 to 1000) {
+      val fxy = customfunction.f(x, y)
+      if (fxy > z){
+        y -= 1
+      }
+      else if (fxy < z){
+        x += 1
+      }
+      else {
+        ans = List(x, y) :: ans
+
+      }
+    }
+    ans
+  }
 }
