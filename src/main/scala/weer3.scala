@@ -1,3 +1,5 @@
+import scala.util.control.Breaks._
+
 object week3 extends App{
 
   def kidsWithCandies(candies: Array[Int], extra: Int): Array[Boolean] = {
@@ -9,7 +11,7 @@ object week3 extends App{
       val ans = if (candy + extra >= maximum) true else false
     } yield ans
   }
-  kidsWithCandies(Array(12, 1, 12), 10)
+  //kidsWithCandies(Array(12, 1, 12), 10)
 
   def smallerNumbers(numbers: Array[Int]): Unit = {
     var amount: Array[Int] = Array.fill[Int](numbers.length)(0)
@@ -66,6 +68,40 @@ object week3 extends App{
       print(i + " ")
     }
   }
-
   intersection(Array(1, 2, 2, 3, 1), Array(2, 2, 4, 3))
+
+  def build(target: Array[Int], n: Int): List[String] = {
+    var cnt: Int = 0
+    var ans: List[String] = List[String]()
+
+    breakable {
+      for (i <- 1 to n) {
+        if (cnt == target.length) {
+          break
+        }
+        if (target(cnt) == i) {
+          ans :+= "Push"
+          cnt += 1
+        }
+        else {
+          ans :+= "Push"
+          ans :+= "Pop"
+        }
+      }
+    }
+    ans
+    //for (i <- ans) {
+     // print(i + " ")
+    //}
+ }
+  println(build(Array(1, 3), 3))
+
+  def decompress(nums: Array[Int]): Array[Int] = {
+    var ans: Array[Int] = Array.fill[Int](nums(0))(nums(1))
+
+    for (i <- 1 until nums.length / 2) {
+      ans = ans ++: Array.fill[Int](nums(2 * i))(nums(2 * i + 1))
+    }
+    ans
+  }
 }
