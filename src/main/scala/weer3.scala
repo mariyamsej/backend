@@ -68,7 +68,7 @@ object week3 extends App{
       print(i + " ")
     }
   }
-  intersection(Array(1, 2, 2, 3, 1), Array(2, 2, 4, 3))
+  //intersection(Array(1, 2, 2, 3, 1), Array(2, 2, 4, 3))
 
   def build(target: Array[Int], n: Int): List[String] = {
     var cnt: Int = 0
@@ -94,7 +94,7 @@ object week3 extends App{
      // print(i + " ")
     //}
  }
-  println(build(Array(1, 3), 3))
+  //println(build(Array(1, 3), 3))
 
   def decompress(nums: Array[Int]): Array[Int] = {
     var ans: Array[Int] = Array.fill[Int](nums(0))(nums(1))
@@ -104,4 +104,17 @@ object week3 extends App{
     }
     ans
   }
+
+  def todecimal(head: List[Int]): Int = {
+    var sz: Int = head.length
+    var ans: Int = 0
+
+    for (i <- head){
+      ans += i * scala.math.pow(2, sz - 1).toInt
+      sz -= 1
+    }
+
+    ans
+  }
+  println(todecimal(List(1, 0, 1, 1)))
 }
