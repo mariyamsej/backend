@@ -85,4 +85,3 @@ object Hello extends App {
   }
   e9(List(1, 2, 3))
 }
-
